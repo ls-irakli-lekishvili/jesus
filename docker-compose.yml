@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jesus-api:
+    container_name: jesus-api
+    build:
+      context: ./jesusApi
+      dockerfile: Dockerfile
+    command: yarn start
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+  jesus-fe:
+    container_name: jesus-fe
+    build:
+      context: ./jesus-fe
+      dockerfile: Dockerfile
+    command: yarn dev --host
+    ports:
+      - "8080:8080"
